@@ -5,4 +5,6 @@
     <string name="user_email">Email</string>
     <string name="sign_in_google">Use google to sign in</string>
     <string name="user_password">Password</string>
+    <string name="edit_text_title">Enter a title</string>
+    <string name="edit_text_body">What\'s on your mind.</string>
 </resources>

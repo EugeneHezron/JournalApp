@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
     android:orientation="vertical">
 
-
-
-
-
-    <EditText
+    <TextView
+        android:id="@+id/tv_entry_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:hint="@string/edit_text_title"
-        android:textAllCaps="true"/>
-    <EditText
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/tv_entry_preview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/edit_text_body"/>
+        android:maxLines="3"/>
 
 </LinearLayout>
