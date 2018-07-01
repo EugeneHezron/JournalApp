@@ -7,4 +7,5 @@
     <string name="user_password">Password</string>
     <string name="edit_text_title">Enter a title</string>
     <string name="edit_text_body">What\'s on your mind.</string>
+    <string name="btn_save">save</string>
 </resources>
