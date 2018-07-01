@@ -1,6 +1,7 @@
 package com.example.android.journalapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,22 +13,21 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.ViewHolder> {
+public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.EntryViewHolder> {
 
     private ArrayList<JournalEntry> mJournalEntries;
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class EntryViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView entryTitle;
-        public TextView entryBody;
+        private TextView entryTitle;
+        private TextView entryBody;
 
-        public ViewHolder(@NonNull View itemView) {
+        public EntryViewHolder(@NonNull View itemView) {
 
             super(itemView);
 
             entryTitle = (TextView) itemView.findViewById(R.id.tv_entry_title);
             entryBody = (TextView) itemView.findViewById(R.id.tv_entry_preview);
-
         }
     }
 
@@ -35,33 +35,30 @@ public class JournalAdapter extends RecyclerView.Adapter<JournalAdapter.ViewHold
         mJournalEntries = fetchedEntries;
     }
 
+
     @NonNull
     @Override
-    public JournalAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-
-        View singleJournalEntry = inflater.inflate(R.layout.entry_instance, parent, false);
-
-        ViewHolder viewHolderInstance = new ViewHolder(singleJournalEntry);
-        return viewHolderInstance;
-
+    public EntryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.entry_instance, viewGroup, false);
+        return new EntryViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull JournalAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EntryViewHolder entryViewHolder, int i) {
+        JournalEntry journalEntry = mJournalEntries.get(i);
 
-        JournalEntry journalEntry = mJournalEntries.get(position);
+        TextView tvTitle = entryViewHolder.entryTitle;
+        TextView tvBody = entryViewHolder.entryBody;
 
-        TextView titleTextView = holder.entryTitle;
-        titleTextView.setText(journalEntry.getEntryTitle());
-        TextView bodyTextView = holder.entryBody;
-        bodyTextView.setText(journalEntry.getEntryBody());
+        tvTitle.setText(journalEntry.getEntryTitle());
+        tvBody.setText(journalEntry.getEntryBody());
     }
+
 
     @Override
     public int getItemCount() {
         return mJournalEntries.size();
     }
+
 
 }
